@@ -1,0 +1,39 @@
+<!DOCTYPE html>  
+<html lang = "en">  
+   <head><title>Home</title></head>  
+   <body>  
+      <h3>  
+         <a href = "{{ url_for('list_students') }}">Students Management System</a>  
+      </h3>  
+        
+      <hr/>  
+      {%- for message in get_flashed_messages() %}  
+         {{ message }}  
+      {%- endfor %}  
+          
+      <h3>Students List</h3>  
+      <table border="2" padding = "5">  
+         <thead>  
+            <tr>  
+               <th>Name</th>  
+               <th>Fees</th>  
+               <th>Age</th>  
+               <th>Reg. No.</th>  
+            </tr>  
+         </thead>  
+  
+         <tbody>  
+            {% for student in Students %}  
+               <tr>  
+                  <td>{{ student.name }}</td>  
+                  <td>{{ student.fees }}</td>  
+                  <td>{{ student.age }}</td>  
+                  <td>{{ student.reg_no }}</td>  
+               </tr>  
+            {% endfor %}  
+         </tbody>  
+      </table>  
+      <br><br>  
+      <a href="{{ url_for('addStudent') }}">Add New Student</a>  
+   </body>  
+</html>  
